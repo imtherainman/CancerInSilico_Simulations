@@ -43,4 +43,7 @@ for (row in seq(1,11)) {
   	final_density_mat[row,col] <- finalDensity
     }
 }
-Heatmap(matrix=final_density_mat)
+rownames(final_density_mat) <- sapply(strsplit(rdsFiles[,1],split="_"),function(x){paste(x[4],x[5])})
+colnames(final_density_mat) <- sapply(strsplit(rdsFiles[1,],split="_"),function(x){paste(x[6],x[7])})
+Heatmap(final_density_mat[paste('Adist',seq(from=0,to=100,by=10)),paste('grAtoB ',seq(from=0,to=200,by=25),'.rds', sep="")],cluster_columns = F,cluster_rows = F)
+# Heatmap(matrix=final_density_mat)
