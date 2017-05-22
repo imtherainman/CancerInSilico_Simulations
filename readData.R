@@ -14,7 +14,8 @@ readFilesAsList <- function(path_to_files) {
     ind <- 1
     for (file in allFiles) {
 
-        CellModelObj_listp[[ind]] <- load(allFiles[[ind]])
+	load(allFiles[[ind]])
+        CellModelObj_list[[ind]] <- output
         ind <- ind + 1
     }
 
