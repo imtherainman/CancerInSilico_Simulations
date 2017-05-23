@@ -2,7 +2,7 @@ library('CancerInSilico')
 library('ComplexHeatmap')
 library(methods)
 
-getFinalProportionMat <- function(list_of_cell_models, num_rows) {
+getFinalProportionData <- function(list_of_cell_models, num_rows) {
 
 	final_proportion_data <- list()
 
@@ -26,6 +26,28 @@ getFinalProportionMat <- function(list_of_cell_models, num_rows) {
 	}
 
 	return(final_proportion_data)
+
+}
+
+makeHeatMap <- function(final_proportion_data) {
+
+	ordered_init_prop_typeA <- sort(unique(sapply(final_proportion_data, function(x) x[1])))
+	ordered_cycle_length_typeB <- sort(unique(sapply(final_proportion_data, function(x) x[2])))
+
+	num_rows <- length(ordered_init_prop_typeA)
+	num_cols <- length(ordered_cycle_length_typeB)
+
+	final_proportion_mat <- matrix(nrow = num_rows, ncol = num_cols)
+
+	for (data in final_proportion_data) {
+
+		xind <- which(num_rows == data[1])
+		yind <- which(num_cols == data[2])
+
+		final_proportion_mat[xind, yind] <- data[3]
+	}
+
+	# make a heatmap using final_proportion_mat
 
 }
 
