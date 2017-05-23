@@ -24,6 +24,8 @@ getFinalProportionMat <- function(list_of_cell_models, num_rows) {
 	}
 
 	return(final_proportion_mat)
+	
+}
 
 # rownames(final_proportion_mat) <- sapply(strsplit(rdsFiles[,1],split="_"),function(x){paste(x[4],x[5])})
 # colnames(final_proportion_mat) <- sapply(strsplit(rdsFiles[1,],split="_"),function(x){paste(x[6],x[7])})
